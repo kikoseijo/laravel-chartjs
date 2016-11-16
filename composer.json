@@ -1,0 +1,22 @@
+{
+    "name": "laggards/laravel-chartjs",
+    "description": "Simples package para facilitar e automatizar o uso de graficos no Laravel 5.x usando a lib Chartjs",
+    "keywords": ["chartjs","laravel5","chart","reports","graphics"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Laggards",
+            "email": "laggards@foxmail.com"
+        }
+    ],
+    "require": {
+      "php": ">=5.5.9",
+      "laravel/framework": "5.*"
+    },
+
+    "autoload": {
+      "psr-4": {
+        "Laggards\\laravel-chartjs\\" : "src/"
+      }
+    }
+}
