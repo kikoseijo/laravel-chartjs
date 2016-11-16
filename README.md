@@ -1,8 +1,7 @@
 # laravel-chartjs - Chart.js charts to Laravel 5.x
 #(Do not use this package in production. A new updated release is in development for production)
 
-This is a simple package that enables to use simple and quick reports and charts
-using the [Chart.js](http://www.chartjs.org/) Javascript library.
+[Chart.js](http://www.chartjs.org/) Javascript library to Laravel 5.X.
 
 
 # Setup:
@@ -12,7 +11,7 @@ composer require laggards/laravel-chartjs
 
 And add the Service Provider in your file config/app.php:
 ```php
-Laggards\laravel-chartjs\Providers\ChartjsServiceProvider::class
+Laggards\laravelchartjs\Providers\ChartjsServiceProvider::class
 ```
 
 Finally, publish the package to use a configuration file that allows dynamically choose the colors of the graphics according to the chart type and datasets.
