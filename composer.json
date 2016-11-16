@@ -16,7 +16,7 @@
 
     "autoload": {
       "psr-4": {
-        "Laggards\\laravel-chartjs\\" : "src/"
+        "Laggards\\laravelchartjs\\" : "src/"
       }
     }
 }

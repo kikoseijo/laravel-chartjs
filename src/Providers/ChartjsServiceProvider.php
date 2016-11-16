@@ -1,10 +1,10 @@
-<?php namespace Laggards\laravel-chartjs\Providers;
+<?php namespace Laggards\laravelchartjs\Providers;
 
-use Laggards\laravel-chartjs\ChartBar;
-use Laggards\laravel-chartjs\ChartLine;
-use Laggards\laravel-chartjs\ChartPieAndDoughnut;
-use Laggards\laravel-chartjs\ChartPolar;
-use Laggards\laravel-chartjs\ChartRadar;
+use Laggards\laravelchartjs\ChartBar;
+use Laggards\laravelchartjs\ChartLine;
+use Laggards\laravelchartjs\ChartPieAndDoughnut;
+use Laggards\laravelchartjs\ChartPolar;
+use Laggards\laravelchartjs\ChartRadar;
 use Illuminate\Support\ServiceProvider;
 
 class ChartjsServiceProvider extends ServiceProvider

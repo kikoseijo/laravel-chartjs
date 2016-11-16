@@ -1,10 +1,10 @@
-<?php namespace Laggards\laravel-chartjs;
+<?php namespace Laggards\laravelchartjs;
 
-use Laggards\laravel-chartjs\Contracts\Chartjs;
+use Laggards\laravelchartjs\Contracts\Chartjs;
 
 /**
  * Class ChartBar
- * @package Laggards\laravel-chartjs
+ * @package Laggards\laravelchartjs
  */
 class ChartBar implements Chartjs
 {

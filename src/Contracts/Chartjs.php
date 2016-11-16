@@ -1,8 +1,8 @@
-<?php namespace Laggards\laravel-chartjs\Contracts;
+<?php namespace Laggards\laravelchartjs\Contracts;
 
 /**
  * Interface ChartjsInterface
- * @package Laggards\Laravel-chartjs
+ * @package Laggards\Laravelchartjs
  */
 interface Chartjs
 {

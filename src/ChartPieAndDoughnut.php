@@ -1,10 +1,10 @@
-<?php namespace Laggards\laravel-chartjs;
+<?php namespace Laggards\laravelchartjs;
 
-use Laggards\laravel-chartjs\Contracts\Chartjs;
+use Laggards\laravelchartjs\Contracts\Chartjs;
 
 /**
  * Class ChartPie
- * @package Laggards\laravel-chartjs
+ * @package Laggards\laravelchartjs
  */
 class ChartPieAndDoughnut implements Chartjs
 {
