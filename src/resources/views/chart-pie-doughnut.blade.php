@@ -5,37 +5,33 @@
 
     addLoadEvent(function() {
         var <?php echo $element; ?> = document.getElementById("<?php echo $element; ?>").getContext("2d");
-        var PizzaChart = new Chart(<?php echo $element; ?>).<?php echo $type ?>(
-                // ---------------------------------------------------------------
-                // Data sections
-                // ---------------------------------------------------------------
-                [
-                    <?php
-                    $i = 0; // responsible for iteration
-                    foreach($data as $label => $d):
-                        echo '{';
-                    ?>
-                        value: <?php echo $d['value']; ?>,
-                        color:"<?php echo $d['colour']; ?>",
-                        highlight: "<?php echo $d['highlight']; ?>",
-                        label: "<?php echo $d['label']; ?>"
+		var data = {
+			labels: [
+				"空头",
+				"多头"
+			],
+			datasets: [
+				{
+					data: [312, 50],
+					
+					backgroundColor: [
+						"<?php echo $colours[0]['colour']; ?>",
+						"<?php echo $colours[1]['colour']; ?>",
+						"<?php echo $colours[2]['colour']; ?>"
+					],
+					hoverBackgroundColor: [
+						"<?php echo $colours[0]['colour']; ?>",
+						"<?php echo $colours[1]['colour']; ?>",
+						"<?php echo $colours[2]['colour']; ?>"
+					]
+				}]
+		};
+		var PizzaChart = new Chart(PieChart,{
+			type: 'pie',
+			data:data
+		});
 
-                    <?php
-                        ($i+1) == $qtdData ? print '}' : print '},';
-                        $i++;
-                    endforeach;
-                    ?>
-                ],
-                // End data section
-
-
-                // ---------------------------------------------------------------
-                // Options section
-                // ---------------------------------------------------------------
-                {
-                    responsive:true,
-                });
-                // End options section
-                document.getElementById('js-legend-pie').innerHTML = PizzaChart.generateLegend();
+		// End options section
+		//document.getElementById('js-legend-pie').innerHTML = PizzaChart.generateLegend();
     });
 </script>

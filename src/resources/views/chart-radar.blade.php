@@ -19,46 +19,39 @@
      */
     addLoadEvent(function() {
         var <?php echo $element; ?> = document.getElementById("<?php echo $element; ?>").getContext("2d");
+		var data = {
+			labels: ["胜率", "收益率", "净收益", "持仓时间", "加仓次数", "减仓次数", "波动率"],
+			datasets: [
+				{
+					label: "实际值",
+					backgroundColor: "<?php echo $colours[0]; ?>",
+					borderColor: "<?php echo $colours[6]; ?>",
+					pointBackgroundColor: "<?php echo $colours[0]; ?>",
+					pointBorderColor: "#fff",
+					pointHoverBackgroundColor: "#fff",
+					pointHoverBorderColor: "<?php echo $colours[0]; ?>",
+					data: [35, 85, 50, 81, 56, 55, 55]
+				},
+				{
+					label: "最优值",
+					backgroundColor: "<?php echo $colours[1]; ?>",
+					borderColor: "<?php echo $colours[7]; ?>",
+					pointBackgroundColor: "<?php echo $colours[1]; ?>",
+					pointBorderColor: "<?php echo $colours[1]; ?>",
+					pointHoverBackgroundColor: "<?php echo $colours[1]; ?>",
+					pointHoverBorderColor: "<?php echo $colours[1]; ?>",
+					data: [75, 85, 80, 89, 96, 87, 80]
+				}
+			]
+		};
+		var myRadarChart = new Chart(<?php echo $element; ?>, {
+			type: 'radar',
+			data: data
+			//options: options
+		});
 
-        window.myRadar = new Chart(<?php echo $element; ?>).Radar(
-                    // ---------------------------------------------------------------
-                    // Data sections
-                    // ---------------------------------------------------------------
-                    {
-                    labels: label,
-                    datasets:
-                            [
-                                <?php
-                                $i = 0; // responsible for iteration
-                                foreach($dataset as $dado):
-                                    echo '{';
-                                ?>
-
-                                    label: "<?php echo $legends[$i]; ?>",
-                                    fillColor: "<?php echo $colours[$i]; ?>",
-                                    strokeColor: "<?php echo $colours[$i]; ?>",
-                                    pointColor: "<?php echo $colours[$i]; ?>",
-                                    pointStrokeColor: "#fff",
-                                    pointHighlightFill: "#fff",
-                                    pointHighlightStroke: "<?php echo $colours[$i]; ?>",
-                                    data : [<?php echo $dado; ?>]
-
-                                    <?php
-                                    ($i+1) == $qtdDatasets ? print '}' : print '}, ';
-                                    $i++;
-                                endforeach;
-                                ?>
-                            ]
-                    },
-                    // End data section
-
-                    // ---------------------------------------------------------------
-                    // Options section
-                    // ---------------------------------------------------------------
-                    {
-                        responsive:true
-                    });
-                    document.getElementById('js-legend-radar').innerHTML = myRadar.generateLegend();
+        
+                    //document.getElementById('js-legend-radar').innerHTML = myRadar.generateLegend();
                     // End options section
 
     });

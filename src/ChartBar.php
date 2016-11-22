@@ -41,25 +41,25 @@ class ChartBar implements Chartjs
         foreach($data as $label => $info) {
             count($info) > $datasetQnt ? $datasetQnt = count($info) : $datasetQnt += 0;
         }
-
+			
         $labels = array_keys($data);
-
+		$values = array_values($data);
         // Especially to group the datasets in the right way considering the index of data array
-        for($i = 0; $i < $datasetQnt; $i++) {
+		//$dataset = array_values($data);
+/*         for($i = 0; $i < $datasetQnt; $i++) {
             $dataset[$i] = array_column($data, $i);
-            $dataset[$i] = implode(", ", $dataset[$i]);
+            //$dataset[$i] = implode(", ", $dataset[$i]);
             $colours[$i] = $this->colours[$i];
-
             $this->verifyLegendChartExist($options['legends']) ?
                 $legends[$i] = $options['legends'][$i] : $legends[$i] = 'My dataset '.($i+1);
-        }
+        } */
 
         return view('chart-bar::chart-bar')
             ->with(['element'       => $canvas,
-                    'dataset'       => $dataset,
+                    'dataset'       => $values,
                     'labels'        => $labels,
                     'legends'       => $legends,
-                    'colours'       => $colours,
+                    'colours'       => $this->colours,
                     'qtdDatasets'   => $datasetQnt
             ]);
 

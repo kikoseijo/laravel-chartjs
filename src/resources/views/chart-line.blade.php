@@ -9,57 +9,50 @@
      * variable names when using more than one report.
      */
     addLoadEvent(function() {
-        var label = []; // graphic label array
+        var labels = []; // graphic label array
         var infor = []; // graphic data array
-
         // incremeting labels array
         <?php foreach($labels as $label): ?>
-        label.push("<?php echo $label; ?>");
+        labels.push("<?php echo $label; ?>");
         <?php endforeach; ?>
-    
-        var <?php echo $element; ?> = document.getElementById("<?php echo $element; ?>").getContext("2d");
-
-        window.myLine = new Chart(<?php echo $element; ?>).Line(
-                    // ---------------------------------------------------------------
-                    // Data sections
-                    // ---------------------------------------------------------------
-                    {
-                    labels: label,
-                    datasets:
-                            [
-                                <?php
-                                $i = 0; // responsible for iteration
-                                foreach($dataset as $dado):
-                                    echo '{';
-                                ?>
-
-                                    label: "<?php echo $legends[$i]; ?>",
-                                    fillColor: "<?php echo $colours[$i]; ?>",
-                                    strokeColor: "<?php echo $colours[$i]; ?>",
-                                    pointColor: "<?php echo $colours[$i]; ?>",
-                                    pointStrokeColor: "#fff",
-                                    pointHighlightFill: "#fff",
-                                    pointHighlightStroke: "<?php echo $colours[$i]; ?>",
-                                    data : [<?php echo $dado; ?>]
-
-                                    <?php
-                                    ($i+1) == $qtdDatasets ? print '}' : print '}, ';
-                                    $i++;
-                                endforeach;
-                                ?>
-                            ]
-                    },
-                    // End data section
-
-                    // ---------------------------------------------------------------
-                    // Options section
-                    // ---------------------------------------------------------------
-                    {
-
-                        responsive:true
-                    });
-                    document.getElementById('js-legend-line').innerHTML = myLine.generateLegend();
-                    // End options section
+        <?php $i=0; ?>
+		var data = {
+			labels: labels,
+			datasets: [
+				<?php foreach($dataset as $d): ?>
+				{	
+					label: "<?php echo $d['label']; ?>",
+					fill: false,
+					lineTension: 0.1,
+					backgroundColor: "<?php echo $colours[$i]; ?>",
+					borderColor: "<?php echo $colours[$i+6]; ?>",
+					borderCapStyle: 'butt',
+					borderDash: [],
+					borderDashOffset: 0.0,
+					borderJoinStyle: 'miter',
+					pointBorderColor: "<?php echo $colours[$i+6]; ?>",
+					pointBackgroundColor: "#fff",
+					pointBorderWidth: 3,
+					pointHoverRadius: 5,
+					pointHoverBackgroundColor: "<?php echo $colours[$i+6]; ?>",
+					pointHoverBorderColor: "<?php echo $colours[$i+6]; ?>",
+					pointHoverBorderWidth: 2,
+					pointRadius: 5,
+					pointHitRadius: 10,
+					data: <?php echo json_encode($d['data']); ?>,
+					spanGaps: false,
+				},
+				<?php $i++; ?>
+				<?php endforeach; ?>
+			]
+		};
+        var ctx = document.getElementById("<?php echo $element; ?>").getContext("2d");
+		window.myLine = new Chart(ctx, {
+			type: 'line',
+			data: data
+		});
+		//document.getElementById('js-legend-line').innerHTML = myLine.generateLegend();
+		// End options section
 
     });
 </script>

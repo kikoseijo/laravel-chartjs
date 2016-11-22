@@ -59,7 +59,7 @@ class ChartRadar implements Chartjs
                     'dataset'       => $dataset,
                     'labels'        => $labels,
                     'legends'       => $legends,
-                    'colours'       => $colours,
+                    'colours'       => $this->colours,
                     'qtdDatasets'   => $datasetQnt
             ]);
 

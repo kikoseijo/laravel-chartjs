@@ -60,7 +60,8 @@ class ChartPieAndDoughnut implements Chartjs
             ->with(['element'   => $canvas,
                     'data'      => $finalData,
                     'qtdData'   => $dataQtd,
-                    'type'      => $type
+                    'type'      => $type,
+					'colours'	=> $this->colours
             ]);
 
     }

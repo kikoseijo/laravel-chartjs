@@ -41,24 +41,22 @@ class ChartLine implements Chartjs
         foreach($data as $label => $info) {
             count($info) > $datasetQnt ? $datasetQnt = count($info) : $datasetQnt += 0;
         }
-
-        $labels = array_keys($data);
-
+		$labels = array_values($data['labels']);
         // Especially to group the datasets in the right way considering the index of data array
-        for($i = 0; $i < $datasetQnt; $i++) {
+/*         for($i = 0; $i < $datasetQnt; $i++) {
             $dataset[$i] = array_column($data, $i);
             $dataset[$i] = implode(", ", $dataset[$i]);
             $colours[$i] = $this->colours[$i];
 
             $this->verifyLegendChartExist($options['legends']) ?
                 $legends[$i] = $options['legends'][$i] : $legends[$i] = 'My dataset '.($i+1);
-        }
+        } */
 
         return view('chart-line::chart-line')
             ->with(['element'       => $canvas,
-                    'dataset'       => $dataset,
+                    'dataset'       => $data['dataset'],
                     'labels'        => $labels,
-                    'colours'       => $colours,
+                    'colours'       => $this->colours,
                     'legends'       => $legends,
                     'qtdDatasets'   => $datasetQnt
             ]);
